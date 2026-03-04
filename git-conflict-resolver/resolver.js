@@ -8,7 +8,8 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 export async function findConflictsAndResolve() {
   const status = await git.status();
   const conflictedFiles = status.conflicted;
-
+  console.log("status: ",status)
+  console.log("conflictedFiles: ",conflictedFiles)
   for (const file of conflictedFiles) {
     const content = await fs.readFile(file, "utf8");
 
