@@ -14,6 +14,7 @@ app.post("/webhook", async (req, res) => {
   if (action === "opened" || action === "synchronize") {
     const { owner, name } = repository;
     const prNumber = pull_request.number;
+    console.log("owner, name: ",owner, name)
 
     const diff = await getPRDiff(owner.login, name, prNumber);
     const summary = await summarizePR(diff);
